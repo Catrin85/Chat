@@ -1,0 +1,71 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:paddingLeft="@dimen/landscape_login_xl_paddings"
+    android:paddingRight="@dimen/landscape_login_xl_paddings">
+
+    <LinearLayout 
+         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/small_padding">
+
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/etEmail"
+            style="@style/register_formedit"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            app:layout_constraintBottom_toTopOf="@+id/etPassword"
+            app:layout_constraintTop_toBottomOf="@+id/etusername"
+            tools:layout_editor_absoluteX="84dp"
+            app:emptyErrorString="@string/error_field_must_not_be_empty"
+            app:testErrorString="@string/error_email_address_not_valid"
+            app:testType="email" />
+
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/etPassword"
+            style="@style/register_formedit"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/etConfirmPassword"
+            app:layout_constraintTop_toBottomOf="@+id/etEmail"
+            tools:layout_editor_absoluteX="84dp"
+            app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/etConfirmPassword"
+            style="@style/register_formedit"
+            android:hint="@string/confirm_password"
+            android:inputType="textPassword"
+            app:layout_constraintBottom_toTopOf="@+id/btnNewMembership"
+            app:layout_constraintTop_toBottomOf="@+id/etPassword"
+            app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+        <com.andreabaccega.widget.FormEditText
+            android:id="@+id/etusername"
+            style="@style/register_formedit"
+            android:hint="@string/name"
+
+            app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+        <Button
+            android:id="@+id/btnNewMembership"
+            style="@style/Button.Primary.LoginRegister"
+            android:layout_below="@+id/etusername"
+            android:text="@string/register" />
+
+        <Button
+            android:id="@+id/btnAlreadyHaveAccount"
+            style="@style/Button.Primary.LoginRegister"
+            android:text="@string/already_have_account" />
+
+    </LinearLayout>
+</ScrollView>

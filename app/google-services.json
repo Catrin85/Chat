@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "557391736636",
+    "project_id": "mychat-f4a0c",
+    "storage_bucket": "mychat-f4a0c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557391736636:android:44c16feff0a2e512f2b839",
+        "android_client_info": {
+          "package_name": "com.katesin.testchat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557391736636-n0g638trtdqkgodhs8vkueo9a9mp60n9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDfNDB2EwBQPg1x_GdjZGLEvSoVzUGA32w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557391736636-n0g638trtdqkgodhs8vkueo9a9mp60n9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

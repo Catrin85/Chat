@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnEdit"
+        android:layout_marginBottom="-16dp"
+        android:background="@color/white"
+        android:isScrollContainer="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/medium_padding">
+
+            <FrameLayout
+                android:id="@+id/frameimage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/small_margin5"
+                android:background="@drawable/circle_circle">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgPhoto"
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="@dimen/image_height"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_account_circle"
+                    android:tint="@color/grey"
+                    android:visibility="visible" />
+
+                <FrameLayout
+                    android:id="@+id/groupProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="@dimen/image_height"
+                        android:src="@color/translucent"
+                        android:visibility="visible" />
+
+                    <ProgressBar
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/progressBarTint"
+                        android:indeterminateTint="@color/progressBarTint"
+                        android:indeterminateTintMode="src_in" />
+
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <TextView
+                style="@style/account_text"
+                android:text="@string/email_colon" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/etEmail"
+                style="@style/account_formedit"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                app:emptyErrorString="@string/error_field_must_not_be_empty"
+                app:testErrorString="@string/error_email_address_not_valid"
+                app:testType="email" />
+
+
+            <TextView
+                style="@style/account_text"
+                android:text="@string/name_colon" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/etName"
+                style="@style/account_formedit"
+                android:hint="@string/name"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+
+            <TextView
+                style="@style/account_text"
+                android:text="@string/status_colon" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/etStatus"
+                style="@style/account_formedit"
+                android:hint="@string/status"
+                android:inputType="textMultiLine"
+                android:maxLength="200"
+                app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+
+            <TextView
+                style="@style/account_text"
+                android:text="@string/current_password_colon" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/etCurrentPassword"
+                style="@style/account_formedit"
+                android:hint="@string/current_password"
+                android:imeOptions="actionNext"
+                android:inputType="textPassword" />
+
+
+            <TextView
+                style="@style/account_text"
+                android:text="@string/new_password_colon" />
+
+            <com.andreabaccega.widget.FormEditText
+                android:id="@+id/etNewPassword"
+                style="@style/account_formedit"
+                android:hint="@string/new_password"
+
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+        android:id="@+id/btnEdit"
+        style="@style/Button.Primary.LoginRegister"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/medium_margin"
+        android:text="@string/update_account" />
+
+</RelativeLayout>

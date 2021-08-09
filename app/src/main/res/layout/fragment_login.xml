@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_vertical"
+    android:background="@color/background"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+
+    android:padding="@dimen/small_padding">
+
+
+    <com.andreabaccega.widget.FormEditText
+        android:id="@+id/etEmail"
+        style="@style/login_formedit"
+        android:hint="@string/email"
+        android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
+        app:emptyErrorString="@string/error_field_must_not_be_empty"
+        app:testErrorString="@string/error_email_address_not_valid"
+        app:testType="email" />
+
+    <com.andreabaccega.widget.FormEditText
+        android:id="@+id/etPassword"
+        style="@style/login_formedit"
+        android:layout_marginTop="@dimen/small_margin"
+        android:hint="@string/password"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        app:emptyErrorString="@string/error_field_must_not_be_empty" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@style/Button.Primary.LoginRegister"
+        android:text="@string/login" />
+
+    <Button
+        android:id="@+id/btnForgetPassword"
+        style="@style/Button.Primary.LoginRegister"
+        android:text="@string/forget_password" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        style="@style/Button.Primary.LoginRegister"
+        android:text="@string/dont_have_account" />
+</LinearLayout>
+
+

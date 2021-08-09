@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="message"
+            type="com.katesin.testchat.domain.messages.MessageEntity" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rlMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
+        android:divider="@drawable/contact_divider"
+        android:focusable="true"
+        android:paddingStart="@dimen/medium_padding"
+        android:paddingTop="@dimen/small_padding"
+        android:paddingEnd="@dimen/medium_padding">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgPhoto"
+            android:layout_width="@dimen/account_photo_dim"
+            android:layout_height="@dimen/account_photo_dim"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_account_circle"
+            app:profileImage="@{message.contact.image}" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgOnline"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignEnd="@+id/imgPhoto"
+            android:layout_alignBottom="@+id/imgPhoto"
+            android:src="@color/colorPrimary"
+            android:visibility="invisible"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:lastSeen="@{message.contact.lastSeen}"
+            tools:visibility="visible" />
+
+        <LinearLayout
+            android:id="@+id/contact_name_and_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_toEndOf="@+id/imgPhoto"
+            android:orientation="vertical"
+            android:padding="@dimen/small_padding">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:gravity="center"
+                android:maxLines="1"
+                android:text="@{message.contact.name}"
+                android:textColor="@color/dark_gray_text"
+                android:textSize="@dimen/medium_text_size"
+                tools:text="@string/name" />
+
+            <TextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{message.type == 1 ? message.message : @string/photo}"
+                android:textSize="@dimen/small_text_size"
+                tools:text="Текст" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/small_text_size"
+            app:date="@{message.date}"
+            tools:text="Дата" />
+
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="account"
+            type="com.katesin.testchat.domain.account.AccountEntity" />
+    </data>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/nav_header_padding_top">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/profileContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/medium_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+
+                app:layout_constraintTop_toTopOf="parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/ivUserImage"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:background="@drawable/circle_circle"
+                    android:src="@drawable/ic_account_circle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileImage="@{account.image}" />
+
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:lines="1"
+                    android:text="@{account.name}"
+                    android:textColor="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:textSize="@dimen/medium_text_size"
+                    app:layout_constraintStart_toEndOf="@id/ivUserImage"
+                    app:layout_constraintTop_toTopOf="@id/ivUserImage"
+                    tools:text="@string/name" />
+
+                <TextView
+                    android:id="@+id/tvUserEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:lines="1"
+                    android:text="@{account.email}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    android:textColor="@color/darkGrey"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    app:layout_constraintStart_toEndOf="@id/ivUserImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvUserName"
+                    tools:text="@string/email" />
+
+                <TextView
+                    android:id="@+id/tvUserStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/small_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:lines="1"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@{account.status}"
+                    android:layout_marginEnd="@dimen/medium_margin"
+                    android:textColor="@color/darkGrey"
+                    app:layout_goneMarginBottom="@dimen/medium_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:visibility="@{account.status.empty ? View.GONE : View.VISIBLE}"
+                    app:layout_constraintStart_toEndOf="@id/ivUserImage"
+                    app:layout_constraintTop_toBottomOf="@id/tvUserEmail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0"
+                    tools:text="Status"
+                    />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/account_barrier"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@android:color/darker_gray"
+                    android:orientation="horizontal"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="ivUserImage, tvUserEmail, tvUserStatus"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/account_barrier" />
+
+                <Button
+                    android:id="@+id/btnChats"
+                    style="@style/navigation_menu_button"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableStart="@drawable/baseline_chat_black_36"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/chats"
+                    android:textColor="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/account_barrier" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnChats" />
+
+                <Button
+                    android:id="@+id/btnFriends"
+                    style="@style/navigation_menu_button"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableStart="@drawable/baseline_group_black_36"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/friends"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@id/btnChats" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/btnFriends" />
+
+                <Button
+                    android:id="@+id/btnAddFriend"
+                    style="@style/navigation_menu_button"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableStart="@drawable/baseline_person_add_black_36"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/add_friend"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@id/btnFriends" />
+
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:layout_marginRight="@dimen/medium_margin"
+                    android:background="@drawable/rounded_edittext_register_login"
+                    android:gravity="center"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="2"
+                    android:padding="10dp"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/darkGrey"
+                    android:textColorHint="@android:color/darker_gray"
+                    android:textSize="@dimen/normal_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnAddFriend"
+                    tools:emptyErrorString="@string/error_field_must_not_be_empty"
+                    tools:testErrorString="@string/error_email_address_not_valid"
+                    tools:testType="email" />
+
+                <Button
+                    android:id="@+id/btnAdd"
+                    style="@style/Button.Primary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/medium_margin"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:layout_marginRight="@dimen/medium_margin"
+                    android:layout_marginBottom="@dimen/small_margin"
+                    android:paddingLeft="15dp"
+                    android:paddingRight="15dp"
+                    android:text="@string/send_request"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="@dimen/normal_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etEmail" />
+
+                <androidx.constraintlayout.widget.Group
+                    android:id="@+id/containerAddFriend"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/small_margin"
+                    android:visibility="gone"
+                    app:constraint_referenced_ids="etEmail, btnAdd" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/addFriendBarrier"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="etEmail, btnAdd, btnAddFriend"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addFriendBarrier" />
+
+                <Button
+                    android:id="@+id/btnRequests"
+                    style="@style/navigation_menu_button"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableStart="@drawable/baseline_group_add_black_36"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/friend_requests"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@id/addFriendBarrier" />
+
+
+                <FrameLayout
+                    android:id="@+id/requestContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/btnRequests" />
+
+                <androidx.constraintlayout.widget.Barrier
+                    android:id="@+id/requestsBarrier"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:barrierDirection="bottom"
+                    app:constraint_referenced_ids="requestContainer, btnRequests" />
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/darkGrey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/requestsBarrier" />
+
+
+                <Button
+                    android:id="@+id/btnLogout"
+                    style="@style/navigation_menu_button"
+                    android:background="?attr/selectableItemBackground"
+                    android:drawableStart="@drawable/loginout"
+                    android:drawableTint="@color/colorPrimary"
+                    android:text="@string/logout"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+
+                    app:layout_constraintTop_toBottomOf="@id/requestsBarrier" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+    </com.google.android.material.navigation.NavigationView>
+</layout>
